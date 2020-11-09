@@ -1,7 +1,7 @@
 {
-  "name": "naga",
+  "name": "wasm-shaders",
   "version": "1.0.0",
-  "description": "shader compiler",
+  "description": "",
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {

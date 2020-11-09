@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./styles.css";
 import SourceInput from "./components/sourceInput";
+import OutputSpv from "./components/outputSpv";
 import { compile } from "./compile";
 
 const App: React.FC = () => {
@@ -22,7 +23,7 @@ void main() {
         }}
       />
       <div className="output">
-        <pre>{output}</pre>
+        <OutputSpv value={output} />
       </div>
     </div>
   );

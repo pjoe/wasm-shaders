@@ -6,3 +6,32 @@
 .output {
   text-align: left;
 }
+
+/* term colors */
+.term-black {
+  color: black;
+}
+.term-red {
+  color: red;
+}
+.term-green {
+  color: green;
+}
+.term-yellow {
+  color: #860;
+}
+.term-blue {
+  color: blue;
+}
+.term-magenta {
+  color: magenta;
+}
+.term-cyan {
+  color: #068;
+}
+.term-white {
+  color: #aaa;
+}
+.term-bright-black {
+  color: #444;
+}
