@@ -19,22 +19,21 @@ export function compile(
     if (nagaIr < 0) {
       return "Compile error";
     }
+
+    switch (outputMode) {
+      case "spv": {
+        const spvData = naga.spv_out(nagaIr);
+
+        return spv.dis(
+          spvData,
+          spv.SPV_ENV_UNIVERSAL_1_3,
+          spv.SPV_BINARY_TO_TEXT_OPTION_INDENT |
+            spv.SPV_BINARY_TO_TEXT_OPTION_FRIENDLY_NAMES |
+            spv.SPV_BINARY_TO_TEXT_OPTION_COLOR
+        );
+      }
+    }
   } catch (error) {
     return `Compile error: ${error}`;
   }
-
-  switch (outputMode) {
-    case "spv": {
-      const spvData = naga.spv_out(nagaIr);
-
-      return spv.dis(
-        spvData,
-        spv.SPV_ENV_UNIVERSAL_1_3,
-        spv.SPV_BINARY_TO_TEXT_OPTION_INDENT |
-          spv.SPV_BINARY_TO_TEXT_OPTION_FRIENDLY_NAMES |
-          spv.SPV_BINARY_TO_TEXT_OPTION_COLOR
-      );
-    }
-  }
-  return "Unknown output mode";
 }

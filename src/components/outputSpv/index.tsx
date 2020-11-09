@@ -14,7 +14,8 @@ const colorCodes: Record<string, string> = {
   "35m": "magenta",
   "36m": "cyan",
   "37m": "white",
-  "1;30m": "bright-black"
+  "1;30m": "bright-black",
+  "1;31m": "bright-red"
 };
 
 /* eslint-disable no-control-regex */
