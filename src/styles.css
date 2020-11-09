@@ -8,6 +8,7 @@
 }
 
 /* term colors */
+/* TODO: handle darkmode */
 .term-black {
   color: black;
 }
