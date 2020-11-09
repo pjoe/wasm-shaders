@@ -17,6 +17,7 @@ const colorCodes: Record<string, string> = {
   "1;30m": "bright-black"
 };
 
+/* eslint-disable no-control-regex */
 const OutputSpv: React.FC<OutputSpvProps> = ({ value }) => {
   const preRef = React.useRef<HTMLPreElement>(null);
   const [rendered, setRendered] = React.useState(false);
