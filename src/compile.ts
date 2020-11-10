@@ -15,6 +15,14 @@ export function compile(
         nagaIr = naga.glsl_in(input, "vertex");
         break;
       }
+      case "glsl.frag": {
+        nagaIr = naga.glsl_in(input, "fragment");
+        break;
+      }
+      case "wgsl": {
+        nagaIr = naga.wgsl_in(input);
+        break;
+      }
     }
     if (nagaIr < 0) {
       return "Compile error";

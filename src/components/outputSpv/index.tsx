@@ -41,11 +41,7 @@ const OutputSpv: React.FC<OutputSpvProps> = ({ value }) => {
       setTimeout(() => setRendered(true), 1);
     }
   }
-  return (
-    <div>
-      <pre ref={preRef}>Content</pre>
-    </div>
-  );
+  return <pre ref={preRef}>Content</pre>;
 };
 
 export default OutputSpv;

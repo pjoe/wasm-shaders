@@ -1,22 +1,17 @@
 import * as React from "react";
 
 interface SourceInputProps {
-  initialValue?: string;
+  value?: string;
   onChange?: (newValue: string) => void;
 }
 
-const SourceInput: React.FC<SourceInputProps> = ({
-  initialValue = "",
-  onChange
-}) => {
-  const [value, setValue] = React.useState(initialValue);
+const SourceInput: React.FC<SourceInputProps> = ({ value = "", onChange }) => {
   return (
     <div>
       <textarea
         placeholder="shader source"
         value={value}
         onChange={(e) => {
-          setValue(e.target.value);
           onChange?.(e.target.value);
         }}
         cols={60}
