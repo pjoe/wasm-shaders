@@ -24,7 +24,9 @@ const InputSelect: React.FC<InputSelectProps> = ({
       }}
     >
       {options.map((o, idx) => (
-        <option value={o}>{o}</option>
+        <option value={o} key={o}>
+          {o}
+        </option>
       ))}
     </select>
   );
