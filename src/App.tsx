@@ -32,38 +32,40 @@ const App: React.FC = () => {
   const [source, setSource] = React.useState(examples[inputMode]);
   const [output, setOutput] = React.useState(compile(source, inputMode, "spv"));
   return (
-    <div className="App container w-full mx-2">
-      <header className="bg-white w-full shadow">
-        <div className="w-full mx-1 py-2 px-4 sm:px-6 lg:px-8">
+    <div className="App mx-2">
+      <header className="w-full shadow">
+        <nav className="flex w-full mx-1 py-2 px-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl font-bold leading-tight text-gray-900">
             Wasm Shaders
           </h1>
-        </div>
+          <div className="mx-2 shader-type">
+            <InputSelect
+              onChange={(val) => {
+                setInputMode(val);
+                setSource(examples[val]);
+                setOutput(compile(examples[val], val, "spv"));
+              }}
+            />
+          </div>
+        </nav>
       </header>
 
-      <div className="shader-input">
-        <div className="shader-type">
-          <InputSelect
-            onChange={(val) => {
-              setInputMode(val);
-              setSource(examples[val]);
-              setOutput(compile(examples[val], val, "spv"));
-            }}
-          />
+      <main className="flex flex-wrap">
+        <div className="flex-inital shader-input">
+          <div className="shader-source w-full font-mono text-sm shadow my-2 px-4">
+            <SourceInput
+              value={source}
+              onChange={(val) => {
+                setSource(val);
+                setOutput(compile(val, inputMode, "spv"));
+              }}
+            />
+          </div>
         </div>
-        <div className="shader-source w-full font-mono text-sm shadow my-2 px-4">
-          <SourceInput
-            value={source}
-            onChange={(val) => {
-              setSource(val);
-              setOutput(compile(val, inputMode, "spv"));
-            }}
-          />
+        <div className="flex-1 shader-output text-sm py-2 px-2">
+          <OutputSpv value={output} />
         </div>
-      </div>
-      <div className="shader-output text-sm py-2 px-2">
-        <OutputSpv value={output} />
-      </div>
+      </main>
     </div>
   );
 };
