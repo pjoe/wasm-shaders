@@ -8,13 +8,14 @@ interface SourceInputProps {
 const SourceInput: React.FC<SourceInputProps> = ({ value = "", onChange }) => {
   return (
     <textarea
+    className="box-border w-full h-full resize-none"
       placeholder="shader source"
       value={value}
       onChange={(e) => {
         onChange?.(e.target.value);
       }}
-      cols={60}
-      rows={15}
+      cols={50}
+      rows={25}
     />
   );
 };

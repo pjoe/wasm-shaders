@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./styles.css";
 import InputSelect, { InputMode } from "./components/inputSelect";
+import EngineSelect from "./components/engineSelect";
 import SourceInput from "./components/sourceInput";
 import OutputSpv from "./components/outputSpv";
 import { compile } from "./compile";
@@ -32,27 +33,26 @@ const App: React.FC = () => {
   const [source, setSource] = React.useState(examples[inputMode]);
   const [output, setOutput] = React.useState(compile(source, inputMode, "spv"));
   return (
-    <div className="App mx-2">
-      <header className="w-full shadow">
-        <nav className="flex w-full mx-1 py-2 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-bold leading-tight text-gray-900">
+    <div className="App mx-0 min-h-screen bg-white">
+      <header className="shadow bg-indigo-700">
+        <nav className="flex items-center space-x-4 mx-1 py-2 px-2 sm:px-3 lg:px-6 shadow-lg">
+          <h1 className="text-2xl leading-tight text-gray-100">
             Wasm Shaders
           </h1>
-          <div className="mx-2 shader-type">
-            <InputSelect
-              onChange={(val) => {
-                setInputMode(val);
-                setSource(examples[val]);
-                setOutput(compile(examples[val], val, "spv"));
-              }}
-            />
-          </div>
+          <EngineSelect />
+          <InputSelect
+            onChange={(val) => {
+            setInputMode(val);
+            setSource(examples[val]);
+            setOutput(compile(examples[val], val, "spv"));
+            }}
+          />
         </nav>
       </header>
 
-      <main className="flex flex-wrap">
-        <div className="flex-inital shader-input">
-          <div className="shader-source w-full font-mono text-sm shadow my-2 px-4">
+      <main className="mx-2 flex flex-wrap items-stretch">
+        <div className="flex-grow min-w-min shader-input border-r-2">
+          <div className="shader-source w-full h-full font-mono text-sm my-2 px-2">
             <SourceInput
               value={source}
               onChange={(val) => {
@@ -62,7 +62,7 @@ const App: React.FC = () => {
             />
           </div>
         </div>
-        <div className="flex-1 shader-output text-sm py-2 px-2">
+        <div className="flex-grow shader-output text-sm py-2 px-2">
           <OutputSpv value={output} />
         </div>
       </main>

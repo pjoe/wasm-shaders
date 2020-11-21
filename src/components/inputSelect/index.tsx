@@ -15,7 +15,7 @@ const InputSelect: React.FC<InputSelectProps> = ({
 }) => {
   const [value, setValue] = React.useState(initialValue);
   return (
-    <select
+    <select className="focus:outline-none py-1 px-1 rounded-md border-2 border-indigo-500 hover:border-indigo-400"
       placeholder="source format"
       value={value}
       onChange={(e) => {
