@@ -1,5 +1,11 @@
 import * as React from "react";
 
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/neat.css";
+import "codemirror/mode/clike/clike";
+
+import { Controlled as CodeMirror } from "react-codemirror2";
+
 interface SourceInputProps {
   value?: string;
   onChange?: (newValue: string) => void;
@@ -7,15 +13,17 @@ interface SourceInputProps {
 
 const SourceInput: React.FC<SourceInputProps> = ({ value = "", onChange }) => {
   return (
-    <textarea
-    className="box-border w-full h-full resize-none"
-      placeholder="shader source"
-      value={value}
-      onChange={(e) => {
-        onChange?.(e.target.value);
+    <CodeMirror
+      className="box-border w-full h-full resize-none"
+      options={{
+        lineNumbers: true,
+        indentUnit: 4,
+        mode: "x-shader/x-vertex",
       }}
-      cols={50}
-      rows={25}
+      value={value}
+      onBeforeChange={(_editor, _data, value) => {
+        onChange?.(value);
+      }}
     />
   );
 };

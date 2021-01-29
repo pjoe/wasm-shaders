@@ -21,9 +21,9 @@ void main() {
 
 [[stage(vertex)]]
 fn main() -> void {
-  var w: f32 = 1.0;
-  o_pos = vec4<f32>(a_pos, 0.0, w);
-  return;
+    var w: f32 = 1.0;
+    o_pos = vec4<f32>(a_pos, 0.0, w);
+    return;
 }`,
 };
 
@@ -49,7 +49,7 @@ const App: React.FC = () => {
 
       <main className="mx-2 flex flex-wrap items-stretch">
         <div className="flex-grow min-w-min shader-input border-r-2">
-          <div className="shader-source w-full h-full font-mono text-sm my-2 px-2">
+          <div className="shader-source w-full h-full my-2">
             <SourceInput
               value={source}
               onChange={(val) => {
