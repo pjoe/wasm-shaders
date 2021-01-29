@@ -16,8 +16,7 @@ layout(location=0) out vec4 o_color;
 void main() {
     o_color = vec4(1);
 }`,
-  wgsl: `# vertex
-[[location(0)]] var<in> a_pos : vec2<f32>;
+  wgsl: `[[location(0)]] var<in> a_pos : vec2<f32>;
 [[location(0)]] var<out> o_pos : vec4<f32>;
 
 [[stage(vertex)]]
@@ -25,7 +24,7 @@ fn main() -> void {
   var w: f32 = 1.0;
   o_pos = vec4<f32>(a_pos, 0.0, w);
   return;
-}`
+}`,
 };
 
 const App: React.FC = () => {
@@ -36,15 +35,13 @@ const App: React.FC = () => {
     <div className="App mx-0 min-h-screen bg-white">
       <header className="shadow bg-indigo-700">
         <nav className="flex items-center space-x-4 mx-1 py-2 px-2 sm:px-3 lg:px-6 shadow-lg">
-          <h1 className="text-2xl leading-tight text-gray-100">
-            Wasm Shaders
-          </h1>
+          <h1 className="text-2xl leading-tight text-gray-100">Wasm Shaders</h1>
           <EngineSelect />
           <InputSelect
             onChange={(val) => {
-            setInputMode(val);
-            setSource(examples[val]);
-            setOutput(compile(examples[val], val, "spv"));
+              setInputMode(val);
+              setSource(examples[val]);
+              setOutput(compile(examples[val], val, "spv"));
             }}
           />
         </nav>
