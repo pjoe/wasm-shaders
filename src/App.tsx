@@ -1,8 +1,8 @@
 import * as React from "react";
 import "./styles.css";
-import InputSelect, { InputMode } from "./components/inputSelect";
+import InputSelect from "./components/inputSelect";
 import EngineSelect from "./components/engineSelect";
-import SourceInput from "./components/sourceInput";
+import SourceInput, { InputMode } from "./components/sourceInput";
 import OutputSpv from "./components/outputSpv";
 import { compile } from "./compile";
 
@@ -52,6 +52,7 @@ const App: React.FC = () => {
           <div className="shader-source w-full h-full my-2">
             <SourceInput
               value={source}
+              mode={inputMode}
               onChange={(val) => {
                 setSource(val);
                 setOutput(compile(val, inputMode, "spv"));
