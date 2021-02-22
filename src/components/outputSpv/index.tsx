@@ -15,7 +15,7 @@ const colorCodes: Record<string, string> = {
   "36m": "cyan",
   "37m": "white",
   "1;30m": "bright-black",
-  "1;31m": "bright-red"
+  "1;31m": "bright-red",
 };
 
 /* eslint-disable no-control-regex */
@@ -41,7 +41,11 @@ const OutputSpv: React.FC<OutputSpvProps> = ({ value }) => {
       setTimeout(() => setRendered(true), 1);
     }
   }
-  return <pre ref={preRef}>Content</pre>;
+  return (
+    <pre ref={preRef} style={{ "white-space": "pre-wrap" }}>
+      Content
+    </pre>
+  );
 };
 
 export default OutputSpv;

@@ -28,7 +28,7 @@ fn main() -> void {
 };
 
 const App: React.FC = () => {
-  const [inputMode, setInputMode] = React.useState<InputMode>("glsl.vert");
+  const [inputMode, setInputMode] = React.useState<InputMode>("wgsl");
   const [source, setSource] = React.useState(examples[inputMode]);
   const [output, setOutput] = React.useState(compile(source, inputMode, "spv"));
   return (
@@ -38,6 +38,7 @@ const App: React.FC = () => {
           <h1 className="text-2xl leading-tight text-gray-100">Wasm Shaders</h1>
           <EngineSelect />
           <InputSelect
+            initialValue={inputMode}
             onChange={(val) => {
               setInputMode(val);
               setSource(examples[val]);
@@ -60,7 +61,7 @@ const App: React.FC = () => {
             />
           </div>
         </div>
-        <div className="flex-grow shader-output text-sm py-2 px-2">
+        <div className="flex-grow max-w-xl shader-output text-sm py-2 px-2">
           <OutputSpv value={output} />
         </div>
       </main>
