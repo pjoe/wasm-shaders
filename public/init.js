@@ -1,4 +1,4 @@
-import * as naga from "https://unpkg.com/wasm-naga@0.3.1/web/wasm_naga.js";
+import * as naga from "https://unpkg.com/wasm-naga@0.3.2/web/wasm_naga.js";
 
 window.initDone = new Promise((resolve) => {
   window.addEventListener("load", async () => {
